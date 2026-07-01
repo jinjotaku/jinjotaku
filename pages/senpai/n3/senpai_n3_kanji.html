@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jinjotaku - Kanjis JLPT N3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+      <!-- local CSS -->
+    <link rel="stylesheet" href="../../../css/global.css">
+</head>
+<body class="gradient-bg min-h-screen flex flex-col items-center pt-8 px-4 sm:px-6 select-none">
+
+    <!-- LOGO Y VUELTA AL INICIO -->
+    <a href="../../../index.html" class="inline-block relative group mb-6" aria-label="Volver al inicio">
+        <div class="logo-hover relative w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl border-4 border-[#d1513c]/20 shadow-xl bg-white flex items-center justify-center p-3 transition-all duration-300">
+            <img 
+                src="../../../img/logo_portal.png" 
+                alt="Jinjotaku Logo" 
+                onerror="this.src='https://placehold.co/150x150/fdf8f5/d1513c?text=Jinjotaku'" 
+                class="w-full h-full object-contain rounded-2xl"
+            >
+        </div>
+        <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#2c405a] text-white text-[10px] px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+            Volver al inicio
+        </span>
+    </a>
+
+    <!-- CABECERA DE LA SECCIÓN -->
+    <div class="text-center w-full max-w-3xl mb-10">
+        <h1 class="text-3xl sm:text-4xl font-black text-[#2c405a] tracking-tight mb-2">
+            Kanjis <span class="text-[#d1513c]">JLPT N3</span>
+        </h1>
+        <p class="text-xs sm:text-sm font-semibold text-slate-500 uppercase tracking-widest">
+            Aprende y pon a prueba tu nivel
+        </p>
+    </div>
+
+    <!-- BOTONERA DE OPCIONES (ESTUDIO Y QUIZ) -->
+    <!-- Se usa max-w-3xl y grid-cols-1 o sm:grid-cols-2 para centrar las 2 tarjetas perfectamente -->
+    <div class="w-full max-w-3xl grid grid-cols-1 sm:grid-cols-2 gap-6 px-2 mb-12">
+        
+        <!-- TARJETA 1: ESTUDIO DE KANJIS -->
+        <a href="senpai_n3_kanji_estudio.html" class="menu-card bg-white border border-[#f5abb2]/30 rounded-3xl p-6 flex flex-col items-center justify-center transition-all duration-300 shadow-md group">
+            <div class="w-16 h-16 bg-[#fdf5f2] rounded-2xl flex items-center justify-center text-[#d1513c] mb-4 group-hover:bg-[#d1513c] group-hover:text-white transition-colors duration-300">
+                <!-- Icono de Libro/Estudio -->
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+            </div>
+            <h2 class="text-lg font-bold text-[#2c405a] mb-1">Estudio de Kanjis</h2>
+            <p class="text-xs text-slate-400 text-center">Explora el listado, significados, lecturas y mnemotecnias.</p>
+        </a>
+
+        <!-- TARJETA 2: QUIZ DE KANJIS -->
+        <a href="senpai_n3_kanji_quiz_kanjis.html" class="menu-card bg-white border border-[#f5abb2]/30 rounded-3xl p-6 flex flex-col items-center justify-center transition-all duration-300 shadow-md group">
+            <div class="w-16 h-16 bg-[#fdf5f2] rounded-2xl flex items-center justify-center text-[#d1513c] mb-4 group-hover:bg-[#d1513c] group-hover:text-white transition-colors duration-300">
+                <!-- Icono de Checklist/Quiz -->
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                </svg>
+            </div>
+            <h2 class="text-lg font-bold text-[#2c405a] mb-1">Quiz de Kanjis</h2>
+            <p class="text-xs text-slate-400 text-center">Pon a prueba tu agilidad mental con un examen interactivo.</p>
+        </a>
+
+    </div>
+
+    <!-- PIE DE PÁGINA (Botón vuelve a 4.html) -->
+    <div class="w-full max-w-3xl mt-auto mb-6">
+        <div class="bg-[#fdf8f5] border border-[#f5abb2]/20 rounded-2xl p-5 text-center flex flex-col sm:flex-row justify-between items-center gap-3 shadow-inner">
+            <div class="text-xs text-[#2c405a]/80">
+                <strong>Jinjotaku 2026</strong> — Tu camino de Gaijin a Ronin empieza aquí. 🌸
+            </div>
+            <div class="text-[11px] uppercase font-bold tracking-widest text-[#d1513c] bg-white px-4 py-2 rounded-lg border border-[#f5abb2]/30 hover:bg-[#fdf8f5] transition-colors cursor-pointer" onclick="window.location.href='senpai_n3.html'">
+                ← Volver al Nivel N3
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

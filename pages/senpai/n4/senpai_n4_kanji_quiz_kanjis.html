@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jinjotaku - Quiz de Kanjis N4 Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+      <!-- local CSS -->
+    <link rel="stylesheet" href="../../../css/global.css">
+</head>
+<body class="gradient-bg min-h-screen flex items-center justify-center p-2 sm:p-4 select-none">
+
+    <div id="app" class="bg-white shadow-2xl rounded-3xl w-full max-w-xl p-6 sm:p-8 border border-amber-100/50 overflow-hidden">
+        
+        <!-- PANTALLA DE INICIO (BRANDING JINJOTAKU) -->
+        <div id="start-screen" class="text-center">
+            <!-- Logo de Jinjotaku adaptado y con fondo integrado (#f5f4f0) -->
+            <a href="../../../index.html">
+                <div class="relative w-28 h-28 mx-auto mb-4 rounded-full border-4 border-[#d1513c] shadow-lg bg-[#f5f4f0] flex items-center justify-center p-3 overflow-hidden">
+                    <img 
+                        src="../../../img/logo_quiz.png" 
+                        alt="Jinjotaku Logo" 
+                        onerror="this.src='https://placehold.co/150x150/fdf8f5/d1513c?text=Jinjotaku'" 
+                        class="max-w-full max-h-full object-contain"
+                    >
+                </div>
+            </a>
+            
+            <h1 class="text-3xl font-extrabold text-[#2c405a] tracking-tight mb-1">JINJOTAKU</h1>
+            <p class="text-xs font-semibold uppercase tracking-widest text-[#d1513c] mb-4">Tu puente entre España y Japón</p>
+            
+            <div class="bg-[#fdf8f5] border border-[#f5abb2]/30 rounded-2xl p-4 mb-5 text-left">
+                <p class="text-xs text-[#2c405a]/80 leading-relaxed font-medium">
+                    🇯🇵✈️🇪🇸 ¡Bienvenido al <strong>Quiz de Kanjis JLPT N4</strong>! 
+                    Entrena tu nivel intermedio-bajo poniendo a prueba lecturas complejas, traducciones y composición mnemotécnica de los ~160 Kanjis más vitales.
+                </p>
+            </div>
+
+            <!-- FILTROS DE CONFIGURACIÓN DEL RETO -->
+            <div class="space-y-3 mb-6 text-left">
+                <!-- Selector de Categoría de Kanjis -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1 pl-1">Categoría de Kanjis</label>
+                    <select id="quiz-category" class="w-full p-3 rounded-xl border border-slate-200 font-semibold text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-[#d1513c]/30 text-sm">
+                        <option value="Todos">Todos los Kanjis N4 Mezclados</option>
+                        <option value="Personas">Personas y Familia (兄, 医, 族...)</option>
+                        <option value="Naturaleza">Naturaleza y Tiempo (春, 海, 昔...)</option>
+                        <option value="Lugares">Lugares y Ubicaciones (町, 駅, 道...)</option>
+                        <option value="Acciones">Acciones y Verbos (思, 走, 働...)</option>
+                        <option value="Adjetivos">Adjetivos (遠, 近, 多...)</option>
+                        <option value="Conceptos">Conceptos (音, 理, 品...)</option>
+                    </select>
+                </div>
+
+                <!-- Selector de Tipo de Pregunta -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1 pl-1">Modalidad de Evaluación</label>
+                    <select id="quiz-type" class="w-full p-3 rounded-xl border border-slate-200 font-semibold text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-[#d1513c]/30 text-sm">
+                        <option value="Mixto">Reto Mixto (Alternar todos los tipos)</option>
+                        <option value="translation">Solo Significado (Kanji ➜ Español)</option>
+                        <option value="reading">Solo Lectura (Kanji ➜ Hiragana)</option>
+                        <option value="kanji_search">Solo Identificación (Español ➜ Elegir Kanji)</option>
+                        <option value="composition">Solo Mnemotecnias (Etimología del ideograma)</option>
+                    </select>
+                </div>
+
+                <!-- Selector de Longitud de Preguntas -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1 pl-1">Longitud del examen</label>
+                    <select id="num-questions" class="w-full p-3 rounded-xl border border-slate-200 font-bold text-[#d1513c] bg-white focus:outline-none focus:ring-2 focus:ring-[#d1513c]/30 text-sm">
+                        <option value="10" selected>Entrenamiento rápido (10 Preguntas)</option>
+                        <option value="20">Estudio Estándar (20 Preguntas)</option>
+                        <option value="40">Reto Avanzado (40 Preguntas)</option>
+                        <option value="all">Modo Sensei (Todos los disponibles)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button onclick="startGame()" class="w-full bg-[#d1513c] hover:bg-[#b93f2b] text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-[#d1513c]/20 active:scale-95">
+                ¡Comenzar Reto de Kanji!
+            </button>
+        </div>
+
+        <!-- PANTALLA DE JUEGO -->
+        <div id="game-screen" class="hidden text-center">
+            <div class="flex flex-wrap justify-between items-center mb-6 gap-2">
+                <div id="progress" class="text-xs sm:text-sm font-bold text-[#d1513c] bg-[#fcebef] px-3 py-1 rounded-full"></div>
+                <div id="score" class="text-xs sm:text-sm font-bold text-[#2c405a]">Puntos: 0</div>
+            </div>
+            
+            <!-- Barra de progreso visual minimalista -->
+            <div class="w-full bg-slate-100 h-2 rounded-full mb-6 overflow-hidden">
+                <div id="progress-bar" class="bg-[#d1513c] h-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+
+            <!-- Gran panel visualizador de Kanji para preguntas de lectura/significado -->
+            <div id="kanji-display-container" class="mb-4 bg-[#fdf8f5] border border-amber-100/50 rounded-2xl py-6 flex items-center justify-center relative overflow-hidden group">
+                <span id="category-badge" class="absolute top-2 left-2 text-[9px] font-bold uppercase text-white bg-[#d1513c]/80 px-2.5 py-0.5 rounded-md tracking-wider"></span>
+                <div id="kanji-display" class="text-7xl sm:text-8xl font-black text-[#d1513c] tracking-wide select-none transition-all"></div>
+            </div>
+
+            <h2 id="question" class="text-md sm:text-lg font-bold text-[#2c405a] mb-6 leading-relaxed"></h2>
+            
+            <div id="options" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+            
+            <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                <button onclick="location.reload()" class="w-full sm:flex-1 bg-slate-100 hover:bg-slate-200 text-slate-600 py-3 rounded-xl text-sm font-bold transition-all">
+                    Reiniciar
+                </button>
+                <button onclick="finish()" class="w-full sm:flex-1 bg-red-100 hover:bg-red-200 text-[#d1513c] py-3 rounded-xl text-sm font-bold transition-all shadow-sm">
+                    Finalizar Test
+                </button>
+            </div>
+        </div>
+
+        <!-- PANTALLA DE RESULTADO FINAL -->
+        <div id="result-screen" class="hidden text-center">
+            <!-- Mini Logo para el cierre adaptado con fondo integrado (#f5f4f0) -->
+            <a href="../../../index.html">
+                <div class="relative w-20 h-20 mx-auto mb-3 rounded-full border-2 border-[#d1513c] shadow-md bg-[#f5f4f0] flex items-center justify-center p-2 overflow-hidden">
+                    <img 
+                        src="../../../img/logo_quiz.png" 
+                        alt="Jinjotaku Logo" 
+                        onerror="this.src='https://placehold.co/100x100/fdf8f5/d1513c?text=Jinjotaku'" 
+                        class="max-w-full max-h-full object-contain"
+                    >
+                </div>
+            </a>
+            
+            <h2 class="text-2xl font-bold text-[#2c405a] mb-1">¡Reto Terminado!</h2>
+            <p class="text-xs text-[#d1513c] font-bold tracking-widest uppercase mb-4">Jinjotaku Kanjis de Japón</p>
+            
+            <p id="final-score" class="text-4xl font-extrabold text-[#d1513c] mb-6"></p>
+            
+            <p class="text-xs text-[#2c405a]/70 text-left mb-2 px-1">Tu hoja de respuestas del viaje:</p>
+            <div id="log" class="text-left bg-[#fdf8f5] p-4 rounded-2xl mb-6 max-h-60 overflow-y-auto text-sm border border-amber-100"></div>
+            
+            <div class="bg-[#fcebef]/40 border border-[#f5abb2]/20 rounded-xl p-3 mb-6 text-xs text-[#2c405a]">
+                <strong>¡Arigatou gozaimasu! 🌸</strong><br>
+                Sigue practicando diariamente para asimilar la escritura conceptual japonesa y aprobar tu JLPT.
+            </div>
+
+            <button onclick="location.reload()" class="w-full bg-[#2c405a] hover:bg-[#1f2e42] text-white py-4 rounded-xl transition-all font-bold shadow-lg shadow-[#2c405a]/20">
+                Intentar de nuevo
+            </button>
+        </div>
+
+        <!-- PIE DE PÁGINA REESTILIZADO -->
+        <div class="max-w-6xl mx-auto mt-8">
+            <div class="bg-[#fdf8f5] border border-[#f5abb2]/20 rounded-2xl p-4 text-center flex flex-col sm:flex-row justify-between items-center gap-3 shadow-inner">
+                <div class="text-xs text-[#2c405a]/80">
+                    <strong>Jinjotaku 2026</strong> — Tu camino de Gaijin a Ronin sigue aquí. 🌸
+                </div>
+                <div class="text-[11px] uppercase font-bold tracking-widest text-[#d1513c] bg-white px-4 py-2 rounded-lg border border-[#f5abb2]/30 hover:bg-[#fdf8f5] transition-colors cursor-pointer" onclick="window.location.href='senpai_n4_kanji.html'">
+                    ← Volver al Menú
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+     <!-- Base de datos quiz kanjis N4 -->
+    <script src="../../../js/senpai/senpai_n4_kanji_quiz.js" charset="utf-8"></script>
+    
+</body>
+</html>

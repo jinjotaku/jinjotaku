@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jinjotaku - Quiz de Kana Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+        <!-- local CSS -->
+    <link rel="stylesheet" href="../../css/global.css">
+
+</head>
+<body class="gradient-bg min-h-screen flex items-center justify-center p-2 sm:p-4 select-none">
+
+    <div id="app" class="bg-white shadow-2xl rounded-3xl w-full max-w-xl p-6 sm:p-8 border border-amber-100/50 overflow-hidden">
+        
+        <!-- PANTALLA DE INICIO -->
+        <div id="start-screen" class="text-center">
+            <a href="../../index.html">
+                <div class="relative w-28 h-28 mx-auto mb-4 rounded-full border-4 border-[#d1513c] shadow-lg bg-[#f5f4f0] flex items-center justify-center p-3 overflow-hidden">
+                    <img 
+                        src="../../img/logo_quiz.png" 
+                        alt="Jinjotaku Logo" 
+                        onerror="this.src='https://placehold.co/150x150/fdf8f5/d1513c?text=Jinjotaku'" 
+                        class="max-w-full max-h-full object-contain"
+                    >
+                </div>
+            </a>
+            
+            <h1 class="text-3xl font-extrabold text-[#2c405a] tracking-tight mb-1">JINJOTAKU</h1>
+            <p class="text-xs font-semibold uppercase tracking-widest text-[#d1513c] mb-4">Tu puente entre España y Japón</p>
+            
+            <div class="bg-[#fdf8f5] border border-[#f5abb2]/30 rounded-2xl p-4 mb-5 text-left text-xs sm:text-sm text-[#2c405a]/80 leading-relaxed font-medium">
+                🇯🇵✏️ ¡Bienvenido al <strong>Quiz de Silabarios Japoneses</strong>! 
+                Hemos mejorado el sistema de aleatoriedad. Configura tu reto personalizado a continuación para empezar a practicar.
+            </div>
+
+            <!-- FILTROS DE CONFIGURACIÓN DEL QUIZ -->
+            <div class="space-y-3 mb-6 text-left">
+                <!-- Selector de Silabario -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1 pl-1">Silabario de estudio</label>
+                    <select id="quiz-system" class="w-full p-3 rounded-xl border border-slate-200 font-semibold text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-[#d1513c]/30 text-sm">
+                        <option value="Ambos">Ambos Silabarios (Hiragana + Katakana)</option>
+                        <option value="Hiragana">Solo Hiragana (ひらがな)</option>
+                        <option value="Katakana">Solo Katakana (カタカナ)</option>
+                    </select>
+                </div>
+
+                <!-- Selector de Tipo/Categoría -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1 pl-1">Categoría de caracteres</label>
+                    <select id="quiz-category" class="w-full p-3 rounded-xl border border-slate-200 font-semibold text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-[#d1513c]/30 text-sm">
+                        <option value="Todos">Todos (Básicos, Dakuten y Yōon)</option>
+                        <option value="Básicos">Solo Básicos (Gojūon)</option>
+                        <option value="Dakuten">Solo Dakuten / Handakuten (゜/ ゛)</option>
+                        <option value="Yōon">Solo Sonidos Contraídos (Yōon)</option>
+                    </select>
+                </div>
+
+                <!-- Selector de Longitud -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1 pl-1">Longitud de tu reto</label>
+                    <select id="num-questions" class="w-full p-3 rounded-xl border border-slate-200 font-bold text-[#d1513c] bg-white focus:outline-none focus:ring-2 focus:ring-[#d1513c]/30 text-sm">
+                        <option value="10">Calentamiento (10 Preguntas)</option>
+                        <option value="25" selected>Estudio Normal (25 Preguntas)</option>
+                        <option value="50">Reto Extenso (50 Preguntas)</option>
+                        <option value="all">Maestro del Kana (Todas las disponibles)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button onclick="startGame()" class="w-full bg-[#d1513c] hover:bg-[#b93f2b] text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-[#d1513c]/20 active:scale-95">
+                ¡Empezar a jugar!
+            </button>
+        </div>
+
+        <!-- PANTALLA DE JUEGO -->
+        <div id="game-screen" class="hidden text-center">
+            <div class="flex flex-wrap justify-between items-center mb-6 gap-2">
+                <div id="progress" class="text-xs sm:text-sm font-bold text-[#d1513c] bg-[#fcebef] px-3 py-1 rounded-full"></div>
+                <div id="score" class="text-xs sm:text-sm font-bold text-[#2c405a]">Puntos: 0</div>
+            </div>
+            
+            <div class="w-full bg-slate-100 h-2 rounded-full mb-6 overflow-hidden">
+                <div id="progress-bar" class="bg-[#d1513c] h-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+
+            <div id="kana-display-container" class="mb-4 bg-[#fdf8f5] border border-amber-100/50 rounded-2xl py-6 flex items-center justify-center relative">
+                <span id="system-badge" class="absolute top-2 left-2 text-[10px] font-bold uppercase text-white bg-[#d1513c]/80 px-2 py-0.5 rounded-md tracking-wider"></span>
+                <div id="kana-display" class="text-7xl sm:text-8xl font-black text-[#d1513c] tracking-wide select-none transition-all"></div>
+            </div>
+
+            <h2 id="question" class="text-md sm:text-lg font-bold text-[#2c405a] mb-6 leading-relaxed"></h2>
+            
+            <div id="options" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+            
+            <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                <button onclick="location.reload()" class="w-full sm:flex-1 bg-slate-100 hover:bg-slate-200 text-slate-600 py-3 rounded-xl text-sm font-bold transition-all">
+                    Reiniciar
+                </button>
+                <button onclick="finish()" class="w-full sm:flex-1 bg-red-100 hover:bg-red-200 text-[#d1513c] py-3 rounded-xl text-sm font-bold transition-all shadow-sm">
+                    Finalizar Test
+                </button>
+            </div>
+        </div>
+
+        <!-- PANTALLA DE RESULTADOS -->
+        <div id="result-screen" class="hidden text-center">
+            <a href="../../index.html">
+                <div class="relative w-20 h-20 mx-auto mb-3 rounded-full border-2 border-[#d1513c] shadow-md bg-[#f5f4f0] flex items-center justify-center p-2 overflow-hidden">
+                    <img 
+                        src="../../img/logo_quiz.png" 
+                        alt="Jinjotaku Logo" 
+                        onerror="this.src='https://placehold.co/100x100/fdf8f5/d1513c?text=Jinjotaku'" 
+                        class="max-w-full max-h-full object-contain"
+                    >
+                </div>
+            </a>
+            
+            <h2 class="text-2xl font-bold text-[#2c405a] mb-1">¡Reto Kana Completado!</h2>
+            <p class="text-xs text-[#d1513c] font-bold tracking-widest uppercase mb-4">Jinjotaku Silabarios</p>
+            
+            <p id="final-score" class="text-4xl font-extrabold text-[#d1513c] mb-6"></p>
+            
+            <p class="text-xs text-[#2c405a]/70 text-left mb-2 px-1">Tu hoja de resultados:</p>
+            <div id="log" class="text-left bg-[#fdf8f5] p-4 rounded-2xl mb-6 max-h-60 overflow-y-auto text-sm border border-amber-100"></div>
+            
+            <div class="bg-[#fcebef]/40 border border-[#f5abb2]/20 rounded-xl p-3 mb-6 text-xs text-[#2c405a]">
+                <strong>¡Sigue así! 🌸</strong><br>
+                La clave para leer fluido en japonés es la práctica diaria. ¡Vuelve pronto a superarte!
+            </div>
+
+            <button onclick="location.reload()" class="w-full bg-[#2c405a] hover:bg-[#1f2e42] text-white py-4 rounded-xl transition-all font-bold shadow-lg shadow-[#2c405a]/20">
+                Intentar de nuevo
+            </button>
+        </div>
+        
+        <!-- PIE DE PÁGINA REESTILIZADO -->
+        <div class="max-w-6xl mx-auto mt-8">
+            <div class="bg-[#fdf8f5] border border-[#f5abb2]/20 rounded-2xl p-4 text-center flex flex-col sm:flex-row justify-between items-center gap-3 shadow-inner">
+                <div class="text-xs text-[#2c405a]/80">
+                    <strong>Jinjotaku 2026</strong> — Tu camino de Gaijin a Ronin empieza aquí. 🌸
+                </div>
+                <div class="text-[11px] uppercase font-bold tracking-widest text-[#d1513c] bg-white px-4 py-2 rounded-lg border border-[#f5abb2]/30 hover:bg-[#fdf8f5] transition-colors cursor-pointer" onclick="window.location.href='kohai.html'">
+                    ← Volver al Menú
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script de lógica aleatoria mejorada -->
+    <script src="../../js/kohai/kohai_quiz_hiragana_katakana.js"></script>
+</body>
+</html>

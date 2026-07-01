@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jinjotaku - Nivel JLPT N4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+       <!-- local CSS -->
+    <link rel="stylesheet" href="../../../css/global.css">
+
+</head>
+<body class="gradient-bg min-h-screen flex flex-col items-center pt-8 px-4 sm:px-6 select-none">
+
+    <a href="../../../index.html" class="inline-block relative group mb-6" aria-label="Volver al inicio">
+        <div class="logo-hover relative w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl border-4 border-[#d1513c]/20 shadow-xl bg-white flex items-center justify-center p-3 transition-all duration-300">
+            <img 
+                src="../../../img/logo_portal.png" 
+                alt="Jinjotaku Logo" 
+                onerror="this.src='https://placehold.co/150x150/fdf8f5/d1513c?text=Jinjotaku'" 
+                class="w-full h-full object-contain rounded-2xl"
+            >
+        </div>
+        <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#2c405a] text-white text-[10px] px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+            Volver al inicio
+        </span>
+    </a>
+
+    <div class="text-center w-full max-w-4xl mb-10">
+        <h1 class="text-3xl sm:text-4xl font-black text-[#2c405a] tracking-tight mb-2">
+            Nivel <span class="text-[#d1513c]">JLPT N4</span>
+        </h1>
+        <p class="text-xs sm:text-sm font-semibold text-slate-500 uppercase tracking-widest">
+            Selecciona tu área de estudio
+        </p>
+    </div>
+
+    <div class="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-3 gap-6 px-2 mb-12">
+        
+        <a href="senpai_n4_gramatica.html" class="menu-card bg-white border border-[#f5abb2]/30 rounded-3xl p-6 flex flex-col items-center justify-center transition-all duration-300 shadow-md group">
+            <div class="w-16 h-16 bg-[#fdf5f2] rounded-2xl flex items-center justify-center text-[#d1513c] mb-4 group-hover:bg-[#d1513c] group-hover:text-white transition-colors duration-300">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+            </div>
+            <h2 class="text-lg font-bold text-[#2c405a] mb-1">N4 Gramática</h2>
+            <p class="text-xs text-slate-400 text-center">Partículas, estructuras y construcciones base.</p>
+        </a>
+
+        <a href="senpai_n4_kanji.html" class="menu-card bg-white border border-[#f5abb2]/30 rounded-3xl p-6 flex flex-col items-center justify-center transition-all duration-300 shadow-md group">
+            <div class="w-16 h-16 bg-[#fdf5f2] rounded-2xl flex items-center justify-center text-[#d1513c] mb-4 group-hover:bg-[#d1513c] group-hover:text-white transition-colors duration-300">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                </svg>
+            </div>
+            <h2 class="text-lg font-bold text-[#2c405a] mb-1">N4 Kanji</h2>
+            <p class="text-xs text-slate-400 text-center">Los primeros ideogramas esenciales y sus lecturas.</p>
+        </a>
+
+        <a href="senpai_n4_verbos.html" class="menu-card bg-white border border-[#f5abb2]/30 rounded-3xl p-6 flex flex-col items-center justify-center transition-all duration-300 shadow-md group">
+            <div class="w-16 h-16 bg-[#fdf5f2] rounded-2xl flex items-center justify-center text-[#d1513c] mb-4 group-hover:bg-[#d1513c] group-hover:text-white transition-colors duration-300">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+            </div>
+            <h2 class="text-lg font-bold text-[#2c405a] mb-1">N4 Verbos</h2>
+            <p class="text-xs text-slate-400 text-center">Acciones fundamentales y sus conjugaciones básicas.</p>
+        </a>
+
+    </div>
+
+     <!-- PIE DE PÁGINA -->
+        <div class="mt-8 bg-[#fdf8f5] border border-[#f5abb2]/20 rounded-2xl p-5 text-center flex flex-col sm:flex-row justify-between items-center gap-3 shadow-inner">
+            <div class="text-xs text-[#2c405a]/80">
+                <strong>Jinjotaku</strong> — Tu camino de Gaijin a Ronin empieza aquí. 🌸
+            </div>
+            <div class="text-[11px] uppercase font-bold tracking-widest text-[#d1513c] bg-white px-4 py-2 rounded-lg border border-[#f5abb2]/30 hover:bg-[#fdf8f5] transition-colors cursor-pointer" onclick="window.location.href='../senpai.html'">
+                ← Volver al Menú
+            </div>
+        </div>
+</body>
+</html>

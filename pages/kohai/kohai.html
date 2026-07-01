@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jinjotaku - Nivel 2: Kohai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+   
+     <!-- local CSS -->
+    <link rel="stylesheet" href="../../css/global.css">
+
+</head>
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4 sm:p-8 select-none text-[#2c405a]">
+
+    <!-- CONTENEDOR CENTRAL -->
+    <div class="w-full max-w-5xl bg-white/80 backdrop-blur-md shadow-2xl rounded-3xl p-6 sm:p-10 border border-amber-100/50 my-4">
+        
+        <!-- CABECERA PRINCIPAL -->
+        <div class="text-center mb-10">
+            <!-- Logo Enlazado a Index -->
+            <a href="../../index.html" class="inline-block relative group" aria-label="Volver al inicio">
+                <div class="logo-hover relative w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 rounded-3xl border-4 border-[#d1513c]/20 shadow-xl bg-white flex items-center justify-center p-3 transition-all duration-300">
+                    <img 
+                        src="../../img/logo_portal.png" 
+                        alt="Jinjotaku Logo" 
+                        onerror="this.src='https://placehold.co/150x150/fdf8f5/d1513c?text=Jinjotaku'" 
+                        class="w-full h-full object-contain rounded-2xl"
+                    >
+                </div>
+                <!-- Tooltip visual para saber que se puede volver atrás -->
+                <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#2c405a] text-white text-[10px] px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    Volver al inicio
+                </span>
+            </a>
+            
+            <div class="flex items-center justify-center gap-3 mt-4 mb-2">
+                <span class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#d1513c] bg-[#fcebef] px-3 py-1.5 rounded-full border border-[#f5abb2]/30">
+                    Nivel 2
+                </span>
+            </div>
+            
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-[#2c405a] tracking-tight mb-2">Kohai</h1>
+            <p class="text-xs sm:text-sm font-bold uppercase tracking-widest text-slate-400 max-w-md mx-auto leading-relaxed border-b-2 border-slate-100 pb-4">
+                Iniciando el Estudio
+            </p>
+            
+            <p class="text-xs sm:text-sm text-[#2c405a]/80 mt-4 max-w-2xl mx-auto font-medium leading-relaxed px-2">
+                ¡Has comenzado formalmente tu aprendizaje! 🌸 Domina los silabarios fundamentales y asienta los pilares gramaticales de tu japonés paso a paso.
+            </p>
+        </div>
+
+        <!-- REJILLA DE LAS 3 SECCIONES DE KOHAI -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+            
+            <!-- TARJETA 1: HIRAGANA Y KATAKANA -->
+            <a href="kohai_hiragana_katakana.html" class="app-card group block bg-white border border-slate-200/60 p-6 rounded-2xl shadow-sm transition-all duration-300 text-left flex flex-col justify-between h-full relative overflow-hidden">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-[#fcebef] flex items-center justify-center text-2xl font-black text-[#d1513c] mb-4">
+                        あ
+                    </div>
+                    <h2 class="text-lg sm:text-xl font-extrabold text-[#2c405a] group-hover:text-[#d1513c] transition-colors flex items-center justify-between gap-2">
+                        Hiragana y Katakana
+                        <span class="arrow-icon transition-transform duration-300 text-slate-400">→</span>
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-3 leading-relaxed">
+                        Aprende los silabarios básicos japoneses con divertidas reglas mnemotécnicas. El paso inicial y fundamental para leer y escribir.
+                    </p>
+                </div>
+            </a>
+
+            <!-- TARJETA 2: QUIZ HIRAGANA KATAKANA -->
+            <a href="kohai_quiz_hiragana_katakana.html" class="app-card group block bg-white border border-slate-200/60 p-6 rounded-2xl shadow-sm transition-all duration-300 text-left flex flex-col justify-between h-full relative overflow-hidden">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-[#fcebef] flex items-center justify-center text-2xl font-black text-[#d1513c] mb-4">
+                        練
+                    </div>
+                    <h2 class="text-lg sm:text-xl font-extrabold text-[#2c405a] group-hover:text-[#d1513c] transition-colors flex items-center justify-between gap-2">
+                        Quiz de Kana
+                        <span class="arrow-icon transition-transform duration-300 text-slate-400">→</span>
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-3 leading-relaxed">
+                        Pon a prueba tu velocidad mental, lectura y memoria en un reto interactivo para consolidar el dominio del Hiragana y Katakana.
+                    </p>
+                </div>
+            </a>
+
+            <!-- TARJETA 3: JAPONÉS BÁSICO -->
+            <a href="kohai_japon_basico.html" class="app-card group block bg-white border border-slate-200/60 p-6 rounded-2xl shadow-sm transition-all duration-300 text-left flex flex-col justify-between h-full relative overflow-hidden">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-[#fcebef] flex items-center justify-center text-2xl font-black text-[#d1513c] mb-4">
+                        基
+                    </div>
+                    <h2 class="text-lg sm:text-xl font-extrabold text-[#2c405a] group-hover:text-[#d1513c] transition-colors flex items-center justify-between gap-2">
+                        Japonés básico
+                        <span class="arrow-icon transition-transform duration-300 text-slate-400">→</span>
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-3 leading-relaxed">
+                        Asienta firmemente las bases de la gramática, el uso de las partículas fundamentales y el vocabulario imprescindible para comunicarte.
+                    </p>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- PIE DE PÁGINA -->
+        <div class="mt-8 bg-[#fdf8f5] border border-[#f5abb2]/20 rounded-2xl p-5 text-center flex flex-col sm:flex-row justify-between items-center gap-3 shadow-inner">
+            <div class="text-xs text-[#2c405a]/80">
+                <strong>Jinjotaku</strong> — Tu camino de Gaijin a Ronin empieza aquí. 🌸
+            </div>
+            <div class="text-[11px] uppercase font-bold tracking-widest text-[#d1513c] bg-white px-4 py-2 rounded-lg border border-[#f5abb2]/30 hover:bg-[#fdf8f5] transition-colors cursor-pointer" onclick="window.location.href='../../index.html'">
+                ← Volver al Menú
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

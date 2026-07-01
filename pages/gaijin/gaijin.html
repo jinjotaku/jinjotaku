@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jinjotaku - Nivel 1: Gaijin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+         <!-- local CSS -->
+    <link rel="stylesheet" href="../../css/global.css">
+    
+</head>
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4 sm:p-8 select-none text-[#2c405a]">
+
+    <!-- CONTENEDOR CENTRAL -->
+    <div class="w-full max-w-5xl bg-white/80 backdrop-blur-md shadow-2xl rounded-3xl p-6 sm:p-10 border border-amber-100/50 my-4">
+        
+        <!-- CABECERA PRINCIPAL -->
+        <div class="text-center mb-10">
+            <!-- Logo Enlazado a Index -->
+            <a href="../../index.html" class="inline-block relative group" aria-label="Volver al inicio">
+                <div class="logo-hover relative w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 rounded-3xl border-4 border-[#d1513c]/20 shadow-xl bg-white flex items-center justify-center p-3 transition-all duration-300">
+                    <img 
+                        src="../../img/logo_portal.png" 
+                        alt="Jinjotaku Logo" 
+                        onerror="this.src='https://placehold.co/150x150/fdf8f5/d1513c?text=Jinjotaku'" 
+                        class="w-full h-full object-contain rounded-2xl"
+                    >
+                </div>
+                <!-- Tooltip visual para saber que se puede volver atrás -->
+                <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#2c405a] text-white text-[10px] px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    Volver al inicio
+                </span>
+            </a>
+            
+            <div class="flex items-center justify-center gap-3 mt-4 mb-2">
+                <span class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#d1513c] bg-[#fcebef] px-3 py-1.5 rounded-full border border-[#f5abb2]/30">
+                    Nivel 1
+                </span>
+            </div>
+            
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-[#2c405a] tracking-tight mb-2">Gaijin</h1>
+            <p class="text-xs sm:text-sm font-bold uppercase tracking-widest text-slate-400 max-w-md mx-auto leading-relaxed border-b-2 border-slate-100 pb-4">
+                Viajeros y Curiosos
+            </p>
+            
+            <p class="text-xs sm:text-sm text-[#2c405a]/80 mt-4 max-w-2xl mx-auto font-medium leading-relaxed px-2">
+                ¡Tu primera aventura empieza aquí! 🎒 Prepárate con lo básico antes de pisar tierras niponas. Elige qué te gustaría aprender primero.
+            </p>
+        </div>
+
+        <!-- REJILLA DE LAS 3 SECCIONES DE GAIJIN -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
+            
+            <!-- TARJETA 1: JAPONÉS PARA TU VIAJE -->
+            <a href="gaijin_japon_viaje.html" class="app-card group block bg-white border border-slate-200/60 p-6 rounded-2xl shadow-sm transition-all duration-300 text-left flex flex-col justify-between h-full relative overflow-hidden">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-[#fcebef] flex items-center justify-center text-2xl font-black text-[#d1513c] mb-4">
+                        旅
+                    </div>
+                    <h2 class="text-lg sm:text-xl font-extrabold text-[#2c405a] group-hover:text-[#d1513c] transition-colors flex items-center justify-between gap-2">
+                        Japonés para tu viaje
+                        <span class="arrow-icon transition-transform duration-300 text-slate-400">→</span>
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-3 leading-relaxed">
+                        Frases esenciales para sobrevivir, pedir comida, preguntar por direcciones y disfrutar al máximo tu primer viaje a Japón.
+                    </p>
+                </div>
+            </a>
+
+            <!-- TARJETA 2: JAPONÉS PARA OTAKUS -->
+            <a href="gaijin_japon_otaku.html" class="app-card group block bg-white border border-slate-200/60 p-6 rounded-2xl shadow-sm transition-all duration-300 text-left flex flex-col justify-between h-full relative overflow-hidden">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-[#fcebef] flex items-center justify-center text-2xl font-black text-[#d1513c] mb-4">
+                        漫
+                    </div>
+                    <h2 class="text-lg sm:text-xl font-extrabold text-[#2c405a] group-hover:text-[#d1513c] transition-colors flex items-center justify-between gap-2">
+                        Japonés para Otakus
+                        <span class="arrow-icon transition-transform duration-300 text-slate-400">→</span>
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-3 leading-relaxed">
+                        Descubre el vocabulario, saludos icónicos y las expresiones más comunes de tus animes, mangas y videojuegos favoritos.
+                    </p>
+                </div>
+            </a>
+
+            <!-- TARJETA 3: CHOQUES CULTURALES -->
+            <a href="gaijin_choque_cultura.html" class="app-card group block bg-white border border-slate-200/60 p-6 rounded-2xl shadow-sm transition-all duration-300 text-left flex flex-col justify-between h-full relative overflow-hidden">
+                <div>
+                    <div class="w-12 h-12 rounded-xl bg-[#fcebef] flex items-center justify-center text-2xl font-black text-[#d1513c] mb-4">
+                        異
+                    </div>
+                    <h2 class="text-lg sm:text-xl font-extrabold text-[#2c405a] group-hover:text-[#d1513c] transition-colors flex items-center justify-between gap-2">
+                        Choques culturales
+                        <span class="arrow-icon transition-transform duration-300 text-slate-400">→</span>
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-3 leading-relaxed">
+                        Prepárate para las diferencias culturales, conoce las reglas de etiqueta básica y evita malentendidos comunes.
+                    </p>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- PIE DE PÁGINA -->
+        <div class="mt-8 bg-[#fdf8f5] border border-[#f5abb2]/20 rounded-2xl p-5 text-center flex flex-col sm:flex-row justify-between items-center gap-3 shadow-inner">
+            <div class="text-xs text-[#2c405a]/80">
+                <strong>Jinjotaku</strong> — Tu camino de Gaijin a Ronin empieza aquí. 🌸
+            </div>
+            <div class="text-[11px] uppercase font-bold tracking-widest text-[#d1513c] bg-white px-4 py-2 rounded-lg border border-[#f5abb2]/30 hover:bg-[#fdf8f5] transition-colors cursor-pointer" onclick="window.location.href='../../index.html'">
+                ← Volver al Menú
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jinjotaku - En Construcción</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+         <!-- local CSS -->
+    <link rel="stylesheet" href="../../css/global.css">
+    
+</head>
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4 sm:p-8 select-none text-[#2c405a]">
+
+    <!-- CONTENEDOR CENTRAL -->
+    <div class="w-full max-w-md bg-white/90 backdrop-blur-md shadow-2xl rounded-3xl p-8 sm:p-10 border border-amber-100/50 text-center fade-in-up">
+        
+        <!-- CABECERA PRINCIPAL (BRANDING) -->
+        <div class="mb-6">
+            <!-- Logo Jinjotaku -->
+            <div class="relative w-20 h-20 mx-auto mb-3 rounded-2xl border-2 border-[#d1513c]/20 shadow-md bg-white flex items-center justify-center p-2">
+                <img 
+                    src="../../img/logo_portal.png" 
+                    alt="Jinjotaku Logo" 
+                    onerror="this.src='https://placehold.co/100x100/fdf8f5/d1513c?text=Jinjotaku'" 
+                    class="w-full h-full object-contain rounded-xl"
+                >
+            </div>
+            
+            <h1 class="text-2xl font-extrabold text-[#2c405a] tracking-tight">JINJOTAKU</h1>
+            <p class="text-[10px] font-bold uppercase tracking-widest text-[#d1513c] mt-1">
+                El puente entre España y Japón
+            </p>
+        </div>
+
+        <!-- IMAGEN KITSUNE CHIBI Y MENSAJE -->
+        <div class="my-8">
+            <!-- Contenedor para la imagen de la kitsune -->
+            <!-- Nota: Sustituye 'kitsune_gomen.png' por la ruta real de tu imagen -->
+            <div class="relative w-48 h-48 sm:w-56 sm:h-56 mx-auto mb-6">
+                <img 
+                    src="../../img/kitsune_gomen.png" 
+                    alt="Chibi Kitsune pidiendo disculpas" 
+                    onerror="this.src='https://placehold.co/300x300/fcebef/d1513c?text=(%3E_%3C)+Gomen!'" 
+                    class="w-full h-full object-contain drop-shadow-xl animate-bounce"
+                    style="animation-duration: 3s;"
+                >
+            </div>
+
+            <h2 class="text-3xl font-black text-[#d1513c] mb-2 tracking-tight">¡Gomen!</h2>
+            <p class="text-sm sm:text-base text-slate-500 font-medium px-4 leading-relaxed">
+                Esta parte aún no está acabada. <br>¡Nuestros ninjas están trabajando duro en ello!
+            </p>
+        </div>
+
+        <!-- BOTÓN DE VOLVER -->
+        <div class="mt-8">
+            <a href="../../index.html" class="group relative inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#d1513c] text-white font-bold rounded-xl shadow-lg shadow-[#d1513c]/30 hover:bg-[#b84330] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto">
+                <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Volver al inicio
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

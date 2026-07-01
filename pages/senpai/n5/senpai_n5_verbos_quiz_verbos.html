@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jinjotaku - Quiz de Verbos Japoneses Pro</title>
+    <!-- Cargando Tailwind CSS de forma externa -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+       <!-- local CSS -->
+    <link rel="stylesheet" href="../../../css/global.css">
+</head>
+<body class="gradient-bg min-h-screen flex flex-col items-center justify-center p-2 sm:p-4 select-none">
+
+    <div id="app" class="bg-white shadow-2xl rounded-3xl w-full max-w-xl p-6 sm:p-8 border border-amber-100/50 overflow-hidden relative z-10">
+        
+        <!-- PANTALLA DE INICIO (BRANDING JINJOTAKU) -->
+        <div id="start-screen" class="text-center">
+            <!-- Logo de Jinjotaku adaptado -->
+            <a href="../../../index.html"> 
+                <div class="relative w-32 h-32 mx-auto mb-4 rounded-full border-4 border-[#d1513c] shadow-lg bg-[#f5f4f0] flex items-center justify-center p-3 overflow-hidden transition-transform hover:scale-105">
+                    <img 
+                        src="../../../img/logo_quiz.png" 
+                        alt="Jinjotaku Logo" 
+                        onerror="this.src='https://placehold.co/150x150/fdf8f5/d1513c?text=Jinjotaku'" 
+                        class="max-w-full max-h-full object-contain"
+                    >
+                </div>
+            </a>
+            
+            <h1 class="text-3xl font-extrabold text-[#2c405a] tracking-tight mb-1">JINJOTAKU</h1>
+            <p class="text-xs font-semibold uppercase tracking-widest text-[#d1513c] mb-4">Tu puente entre España y Japón</p>
+            
+            <div class="bg-[#fdf8f5] border border-[#f5abb2]/30 rounded-2xl p-4 mb-6 text-left">
+                <p class="text-xs text-[#2c405a]/80 leading-relaxed">
+                    🇯🇵✈️🇪🇸 En <strong>Jinjotaku</strong> iniciamos tu camino a Japón. 
+                    <span class="block mt-2 text-[#d1513c] font-semibold">Comienza tu aventura hoy mismo dominando los 50 verbos esenciales.</span>
+                </p>
+            </div>
+
+            <p class="text-sm font-semibold text-[#2c405a] mb-2">Selecciona el número de preguntas:</p>
+            <select id="num-questions" class="w-full mb-2 p-4 rounded-xl border border-slate-200 text-center font-bold text-[#d1513c] bg-white focus:outline-none focus:ring-2 focus:ring-[#d1513c]/50">
+                <option value="" disabled selected>Selecciona una cantidad</option>
+                <option value="10">10 Preguntas</option>
+                <option value="20">20 Preguntas</option>
+                <option value="50">50 Preguntas</option>
+                <option value="100">100 Preguntas</option>
+                <option value="all">Todas las posibles (Modo Supervivencia)</option>
+            </select>
+            
+            <!-- Mensaje de error personalizado en lugar de la alerta -->
+            <p id="error-msg" class="text-xs font-bold text-red-500 mb-4 hidden bg-red-50 p-2 rounded-lg">¡Por favor, selecciona una cantidad de preguntas para empezar!</p>
+
+            <button onclick="startGame()" class="w-full mt-2 bg-[#d1513c] hover:bg-[#b93f2b] text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-[#d1513c]/20 active:scale-95">
+                ¡Comenzar Reto Japonés!
+            </button>
+        </div>
+
+        <!-- PANTALLA DE JUEGO -->
+        <div id="game-screen" class="hidden">
+            <div class="flex flex-wrap justify-between items-center mb-6 gap-2">
+                <div id="progress" class="text-xs sm:text-sm font-bold text-[#d1513c] bg-[#fcebef] px-3 py-1 rounded-full"></div>
+                <div id="score" class="text-xs sm:text-sm font-bold text-[#2c405a]">Puntos: 0</div>
+            </div>
+            
+            <!-- Barra de progreso visual -->
+            <div class="w-full bg-slate-100 h-2 rounded-full mb-6 overflow-hidden">
+                <div id="progress-bar" class="bg-[#d1513c] h-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+
+            <h2 id="question" class="text-md sm:text-lg font-bold text-[#2c405a] mb-6 leading-relaxed"></h2>
+            <div id="options" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+            
+            <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                <button onclick="location.reload()" class="w-full sm:flex-1 bg-slate-100 hover:bg-slate-200 text-slate-600 py-3 rounded-xl text-sm font-bold transition-all">
+                    Reiniciar
+                </button>
+                <button onclick="finish()" class="w-full sm:flex-1 bg-red-100 hover:bg-red-200 text-[#d1513c] py-3 rounded-xl text-sm font-bold transition-all shadow-sm">
+                    Finalizar Test
+                </button>
+            </div>
+        </div>
+
+        <!-- PANTALLA DE RESULTADO FINAL -->
+        <div id="result-screen" class="hidden text-center">
+            <a href="../../../index.html">
+                <div class="relative w-20 h-20 mx-auto mb-3 rounded-full border-2 border-[#d1513c] shadow-md bg-[#f5f4f0] flex items-center justify-center p-2 overflow-hidden transition-transform hover:scale-105">
+                    <img 
+                        src="../../../img/logo_quiz.png" 
+                        alt="Jinjotaku Logo" 
+                        onerror="this.src='https://placehold.co/100x100/fdf8f5/d1513c?text=Jinjotaku'" 
+                        class="max-w-full max-h-full object-contain"
+                    >
+                </div>
+            </a>
+            
+            <h2 class="text-2xl font-bold text-[#2c405a] mb-1">¡Reto Terminado!</h2>
+            <p class="text-xs text-[#d1513c] font-bold tracking-widest uppercase mb-4">Jinjotaku Verbos de Japón</p>
+            
+            <p id="final-score" class="text-4xl font-extrabold text-[#d1513c] mb-6"></p>
+            
+            <p class="text-xs text-[#2c405a]/70 text-left mb-2 px-1">Tu hoja de respuestas del viaje:</p>
+            <div id="log" class="text-left bg-[#fdf8f5] p-4 rounded-2xl mb-6 max-h-60 overflow-y-auto text-sm border border-amber-100"></div>
+            
+            <div class="bg-[#fcebef]/40 border border-[#f5abb2]/20 rounded-xl p-3 mb-6 text-xs text-[#2c405a]">
+                <strong>Arigatou gozaimasu!!</strong><br>
+            </div>
+
+            <button onclick="location.reload()" class="w-full bg-[#2c405a] hover:bg-[#1f2e42] text-white py-4 rounded-xl transition-all font-bold shadow-lg shadow-[#2c405a]/20">
+                Intentar de nuevo
+            </button>
+        </div>
+    </div>
+
+    <!-- PIE DE PÁGINA REESTILIZADO -->
+    <div class="w-full max-w-xl mx-auto mt-6">
+        <div class="bg-[#fdf8f5]/80 backdrop-blur-sm border border-[#f5abb2]/20 rounded-2xl p-5 text-center flex flex-col sm:flex-row justify-between items-center gap-3 shadow-inner">
+            <div class="text-xs text-[#2c405a]/80">
+                <strong>Jinjotaku 2026</strong> — Tu camino de Gaijin a Ronin empieza aquí. 🌸
+            </div>
+            <div class="text-[11px] uppercase font-bold tracking-widest text-[#d1513c] bg-white px-4 py-2 rounded-lg border border-[#f5abb2]/30 hover:bg-[#fdf8f5] transition-colors cursor-pointer" onclick="window.location.href='senpai_n5_verbos.html'">
+                ← Volver al Menú
+            </div>
+        </div>
+    </div>
+
+    <!-- Base de datos Verbos N5 y lógica de aplicación cargada externamente con UTF-8 estricto -->
+    <script src="../../../js/senpai/senpai_n5_verbos_quiz.js" charset="utf-8"></script>
+</body>
+</html>

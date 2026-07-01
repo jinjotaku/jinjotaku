@@ -1,0 +1,109 @@
+/* =========================================
+   JINJOTAKU - ESTILOS GLOBALES
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;600;700;800&display=swap');
+
+body { 
+    font-family: 'Poppins', sans-serif; 
+}
+
+.gradient-bg { 
+    background: radial-gradient(circle, #fdf8f5 0%, #f5e6de 100%); 
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+/* =========================================
+   SCROLLBARS PERSONALIZADOS
+========================================= */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #fdf8f5; }
+::-webkit-scrollbar-thumb { background: #d1513c; border-radius: 10px; }
+
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #f5abb2; border-radius: 4px; }
+
+/* =========================================
+   EFECTOS HOVER (SOLO PC) Y ACTIVE (MÓVIL)
+========================================= */
+@media (hover: hover) {
+    /* Agrupamos todas las tarjetas que hacen el mismo efecto */
+    .app-card:hover, .kanji-card:hover, .kana-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 25px -5px rgba(209, 81, 60, 0.15), 0 10px 10px -6px rgba(209, 81, 60, 0.1);
+        border-color: #f5abb2;
+    }
+    
+    .app-card:hover .arrow-icon {
+        transform: translateX(6px);
+        color: #d1513c;
+    }
+    
+    .logo-hover:hover {
+        transform: rotate(-3deg) scale(1.05);
+        box-shadow: 0 20px 25px -5px rgba(209, 81, 60, 0.2);
+    }
+
+    .filter-btn:hover:not(.active), .sys-tab:hover:not(.active) {
+        background-color: #fdf5f2;
+        color: #d1513c;
+        border-color: #d1513c;
+    }
+
+    .btn-option:hover {
+        border-color: #d1513c !important;
+        background-color: #fdf5f2 !important;
+        color: #d1513c !important;
+    }
+}
+
+/* Feedback táctil para móviles unificado */
+.app-card:active, .logo-hover:active, .kanji-card:active, .kana-card:active {
+    background-color: #fcebef !important;
+    transform: scale(0.97);
+}
+
+.btn-option:active {
+    background-color: #fcebef !important;
+    border-color: #d1513c !important;
+    transform: scale(0.98);
+}
+
+/* =========================================
+   ANIMACIONES
+========================================= */
+.fade-in { animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.audio-playing {
+    animation: pulse-audio 1s infinite;
+    color: #d1513c !important;
+}
+@keyframes pulse-audio {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* =========================================
+   ESTILOS ESPECÍFICOS COMPARTIDOS
+========================================= */
+.filter-btn.active {
+    background-color: #d1513c;
+    color: white;
+    border-color: #d1513c;
+}

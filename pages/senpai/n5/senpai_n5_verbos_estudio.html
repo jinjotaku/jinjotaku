@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jinjotaku - Estudio de Verbos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+       <!-- local CSS -->
+    <link rel="stylesheet" href="../../../css/global.css">
+</head>
+<body class="gradient-bg min-h-screen p-4 sm:p-8 select-none text-[#2c405a]">
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="max-w-6xl mx-auto">
+        
+        <!-- HEADER (BRANDING JINJOTAKU) -->
+        <div class="text-center mb-10">
+            <!-- Logo de Jinjotaku Adaptado -->
+            <a href="../../../index.html" class="inline-block relative group" aria-label="Volver al inicio">
+                <div class="logo-hover relative w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 rounded-3xl border-4 border-[#d1513c]/20 shadow-xl bg-white flex items-center justify-center p-3 transition-all duration-300">
+                    <img 
+                        src="../../../img/logo_portal.png" 
+                        alt="Jinjotaku Logo" 
+                        onerror="this.src='https://placehold.co/150x150/fdf8f5/d1513c?text=Jinjotaku'" 
+                        class="w-full h-full object-contain rounded-2xl"
+                    >
+                </div>
+                <!-- Tooltip visual para saber que se puede volver atrás -->
+                <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-[#2c405a] text-white text-[10px] px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                    Volver al inicio
+                </span>
+            </a>
+            
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-[#2c405a] tracking-tight mb-2">Verbos Esenciales</h1>
+            <p class="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#d1513c] mb-6">Tu puente entre España y Japón</p>
+            
+            <div class="max-w-2xl mx-auto bg-[#fdf8f5] border border-[#f5abb2]/30 rounded-2xl p-4 shadow-sm">
+                <p class="text-sm text-[#2c405a]/80 leading-relaxed font-medium">
+                    Domina las acciones fundamentales del idioma japonés. <strong>Escucha la pronunciación</strong> en su forma de diccionario, y explora todos los tiempos verbales con su romaji correspondiente.
+                </p>
+            </div>
+        </div>
+
+        <!-- FILTROS -->
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10" id="filters">
+            <!-- Los botones se generarán dinámicamente -->
+        </div>
+
+        <!-- GRID DE VERBOS -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="kanjiGrid">
+            <!-- Las tarjetas de verbos se insertarán aquí -->
+        </div>
+
+    </div>
+
+     <!-- PIE DE PÁGINA REESTILIZADO -->
+    <div class="max-w-6xl mx-auto mt-12 mb-6">
+        <div class="bg-[#fdf8f5] border border-[#f5abb2]/20 rounded-2xl p-5 text-center flex flex-col sm:flex-row justify-between items-center gap-3 shadow-inner">
+            <div class="text-xs text-[#2c405a]/80">
+                <strong>Jinjotaku 2026</strong> — Tu camino de Gaijin a Ronin empieza aquí. 🌸
+            </div>
+            <div class="text-[11px] uppercase font-bold tracking-widest text-[#d1513c] bg-white px-4 py-2 rounded-lg border border-[#f5abb2]/30 hover:bg-[#fdf8f5] transition-colors cursor-pointer" onclick="window.location.href='senpai_n5_verbos.html'">
+                ← Volver al Menú
+            </div>
+        </div>
+    </div>
+    
+      <!-- BOTÓN VOLVER ARRIBA (SCROLL TO TOP) -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-[#d1513c] text-white p-3.5 rounded-full shadow-lg opacity-0 translate-y-10 transition-all duration-300 pointer-events-none hover:bg-[#b8422f] active:scale-95 z-50 flex items-center justify-center border-2 border-white" onclick="scrollToTop()" aria-label="Volver arriba">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+    <!-- BASE DE DATOS 50 VERBOS -->
+    <script src="../../../js/senpai/senpai_n5_verbos.js"></script>
+</body>
+</html>
